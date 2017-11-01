@@ -5,3 +5,5 @@ Para correrlo, se hace
 javac -cp sparkseejava.jar HelloSparksee.java
 java -cp sparkseejava.jar:. HelloSparksee
 
+Si estas en Windows, trata una ; en vez de : 
+
