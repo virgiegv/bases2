@@ -4,7 +4,7 @@ create database bases2p1;
 
 create table fuente_soda(codfs integer primary key, nombrefs varchar(20));
 create table bebida(codbeb integer primary key, nombrebeb varchar(20));
-create table bebedor(cedula integer primary key, nombrefs varchar(20));
+create table bebedor(cedula integer primary key, nombre varchar(20));
 create table frecuenta(cedula integer references bebedor(cedula),codfs integer references fuente_soda(codfs));
 create table gusta(cedula integer references bebedor(cedula),codbeb integer references bebida(codbeb));
 create table vende(codfs integer references fuente_soda(codfs),codbeb integer references bebida(codbeb), precio real);
