@@ -154,3 +154,10 @@ insert into gusta values(9,6);
 
 insert into bebedor values(11, 'luis Perez');
 insert into frecuenta values(11, 4);
+insert into frecuenta values(11, 3);
+insert into frecuenta values(11, 2);
+insert into frecuenta values(11, 1);
+insert into gusta values (11, 1);
+insert into gusta values (11, 6);
+insert into gusta values (11, 7);
+insert into gusta values (11, 9);
