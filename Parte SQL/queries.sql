@@ -85,7 +85,7 @@ WHERE (V.codfs = F.codfs) AND (V.codbeb = B.codbeb) AND
     WHERE (V.codfs = F.codfs) AND (V.codbeb = B.codbeb) AND 
     (Fr.cedula = 11) AND (Fr.codfs = F.codfs) ))
 GROUP BY B.nombrebeb
-ORDER BY rownumber DESC;
+ORDER BY sitios_de_venta DESC;
 
 
 /*numero cuarenta (40)>*/
