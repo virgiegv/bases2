@@ -312,6 +312,10 @@ g.setAttribute(anEdge, precioVentaType , value.setInteger(8));
 
 //QUERIES POR HACER
 
+//Bebidas que le gustan a Marlene
+Objects gustanMarlene = g.neighbors(mMarlene, gustaType, EdgesDirection.Outgoing);
+
+
 /*
 // Get the movies directed by Woody Allen
 Objects directedByWoody = g.neighbors(pWoody, directsType , EdgesDirection.Outgoing
@@ -334,20 +338,20 @@ Objects castFromBoth = Objects.combineIntersection(castDirectedByWoody , castDir
 // We don't need the other collections anymore
 castDirectedByWoody.close();
 castDirectedBySofia.close();
-
+*/
 // Say hello to the people found
-ObjectsIterator it = castFromBoth.iterator();
+ObjectsIterator it = gustanMarlene.iterator();
 while (it.hasNext())
 {
-    long peopleOid = it.next();
-    g.getAttribute(peopleOid , peopleNameType , value);
-    System.out.println("Hello " + value.getString());
+    long bebidaid = it.next();
+    g.getAttribute(bebidaid , nombreBebType , value);
+    System.out.println("Encontre " + value.getString());
 }
 // The ObjectsIterator must be closed
 it.close();
 // The Objects must be closed
-castFromBoth.close();
-*/
+gustanMarlene.close();
+
 
 sess.close();
 db.close();
