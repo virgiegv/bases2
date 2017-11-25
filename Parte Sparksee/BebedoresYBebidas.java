@@ -34,7 +34,7 @@ AttributeKind.Indexed);
 int bebedorType = g.newNodeType("BEBEDOR");
 int CIType = g.newAttribute(bebedorType , "CI", DataType.Long, AttributeKind.
 Unique);
-int nombreType = g.newAttribute(fuenteSodaType , "Nombre", DataType.String,
+int nombreType = g.newAttribute(bebedorType , "Nombre", DataType.String,
 AttributeKind.Indexed);
 
 //******************ARISTAS**********************

@@ -2,3 +2,13 @@
 2017-11-25 15:51:41.458|SPARKSEE[INFO] No license code
 2017-11-25 15:51:41.744|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
 2017-11-25 15:51:41.760|Graph[SEVERE] The attribute (13) can not be set because the object (3072) is not of the same type.
+2017-11-25 16:15:12.863|SPARKSEE[INFO] ** START ** 2017-11-25 16:15:12.845 Software version: 5.2.3
+2017-11-25 16:15:12.882|SPARKSEE[INFO] No license code
+2017-11-25 16:15:12.940|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-25 16:15:12.952|Graph[SEVERE] The attribute (13) can not be set because the object (3072) is not of the same type.
+2017-11-25 16:17:20.776|SPARKSEE[INFO] ** START ** 2017-11-25 16:17:20.776 Software version: 5.2.3
+2017-11-25 16:17:20.855|SPARKSEE[INFO] No license code
+2017-11-25 16:17:20.930|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-25 16:17:21.097|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-25 16:17:21.098|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-25 16:17:21.098|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-25 16:17:21.098
