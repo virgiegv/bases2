@@ -320,11 +320,11 @@ Objects gustanMarlene = g.neighbors(mMarlene, gustaType, EdgesDirection.Outgoing
 
 /* los bebedores que frecuentan sitios que vendan todas las bebidas que les gusten*/
 //todos los bebedores
-Objects bebedores = g.select(bebedorType);
+//Objects bebedores = g.select(bebedorType);
 //todos los sitios
-Objects sitios = g.select(fuenteSodaType);
+//Objects sitios = g.select(fuenteSodaType);
 //todas las bebidas
-Objects bebidas = g.select(bebidaType);
+//Objects bebidas = g.select(bebidaType);
 //for each bebedor
 //  gustasitios = true
 //  for each sitio que frecuenta
@@ -340,18 +340,65 @@ Objects bebidas = g.select(bebidaType);
 //   if gustasitios==true then respuesta.add(bebedor)
 
 
+//Personas que van a lugares en los que solo sirven lo que les gusta
+Objects bebedores = g.select(bebedorType);
+ObjectsIterator it = bebedores.iterator();
+Objects respuesta = sess.newObjects();
+while(it.hasNext())
+{
+    long bebActual = it.next();
+
+//Bebidas gustan a persona
+    Objects bebidasGustan = g.neighbors(bebActual, gustaType, EdgesDirection.Outgoing);
+
+//Bebidas
+    Objects bebidas = g.select(bebidaType);
+
+//Bebidas no gustan a persona
+
+    bebidas.difference(bebidasGustan);
+    bebidasGustan.close();
+
+//Fuentes visita persona
+    Objects fuentesVisitadas = g.neighbors(bebActual, frecuentaType, EdgesDirection.Outgoing);
+
+//Bebidas servidas fuentes visitadas
+    Objects BebFuentesVisitadas = g.neighbors(fuentesVisitadas, vendeType, EdgesDirection.Outgoing);
+    fuentesVisitadas.close();
+
+//Bebidas que no gustan servidas en fuentes visitadas
+
+    BebFuentesVisitadas.intersection(bebidas);
+    bebidas.close();
+    g.getAttribute(bebActual , nombreType , value);
+    if (BebFuentesVisitadas.count() > 0){
+        System.out.print(value.getString()+" visita a fuentes que sirven bebidas que no gustan\n");
+    }
+    else{
+        respuesta.add(bebActual);
+        System.out.print(value.getString()+" no visita a fuentes que sirven bebidas que no gustan\n");
+    }
+    BebFuentesVisitadas.close();
+}
+
+long aahia = respuesta.count();
+System.out.format("La query devuelve una lista con %d objetos\n", aahia);
+
+
+respuesta.close();
+it.close();
+bebedores.close();
+
 
 
 /*
 // Get the movies directed by Woody Allen
 Objects directedByWoody = g.neighbors(pWoody, directsType , EdgesDirection.Outgoing
 );
-
 // Get the cast of the movies directed by Woody Allen
 Objects castDirectedByWoody = g.neighbors(directedByWoody , castType , EdgesDirection.Any);
 // We don't need the directedByWoody collection anymore , so we should close it
 directedByWoody.close();
-
 // Get the movies directed by Sofia Coppola
 Objects directedBySofia = g.neighbors(pSofia, directsType , EdgesDirection.Outgoing);
 // Get the cast of the movies directed by Sofia Coppola
@@ -366,7 +413,7 @@ castDirectedByWoody.close();
 castDirectedBySofia.close();
 */
 // Say hello to the people found
-ObjectsIterator it = gustanMarlene.iterator();
+it = gustanMarlene.iterator();
 while (it.hasNext())
 {
     long bebidaid = it.next();
