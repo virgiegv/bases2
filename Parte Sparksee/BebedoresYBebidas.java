@@ -397,6 +397,35 @@ respuesta.close();
 it.close();
 bebedores.close();
 
+//Bebidas que se venden en alguna fuente pero no le gustan a nadie
+//bebidas que no le gustan a nadie
+//bebidas
+Objects bebidas = g.select(bebidaType);
+//personas
+bebedores = g.select(bebedorType);
+//bebidas que gustan a alguien
+Objects bebidasGustan = g.neighbors(bebedores, gustaType, EdgesDirection.Outgoing);
+bebidas.difference(bebidasGustan);
+bebedores.close();
+bebidasGustan.close();
+
+//bebidas que son vendidas
+//fuentes de soda
+Objects fuentes = g.select(fuenteSodaType);
+//bebidas vendidas 
+respuesta = g.neighbors(fuentes, vendeType, EdgesDirection.Outgoing);
+fuentes.close();
+//respuesta
+respuesta.intersection(bebidas);
+bebidas.close();
+it = respuesta.iterator();
+while (it.hasNext())
+{
+    long bebidaid = it.next();
+    g.getAttribute(bebidaid , nombreBebType , value);
+    System.out.println("No gustan y se vende: " + value.getString());
+}
+respuesta.close();
 
 
 /*
