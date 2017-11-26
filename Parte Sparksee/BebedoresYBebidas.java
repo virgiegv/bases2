@@ -201,9 +201,14 @@ anEdge = g.newEdge(gustaType , mCarolinaChang , mJugoLechoza);
 anEdge = g.newEdge(gustaType , mRicardoMonascal , mJugoLechoza);
 anEdge = g.newEdge(gustaType , mRicardoMonascal , mJugoFresa);
 anEdge = g.newEdge(gustaType , mRicardoMonascal , mCafe);
+anEdge = g.newEdge(gustaType , mRicardoMonascal , mJugoGuayaba);
 anEdge = g.newEdge(gustaType , mEnriquePlanchart , mAgua);
 anEdge = g.newEdge(gustaType , mVicenteYriarte , mCafe);
 anEdge = g.newEdge(gustaType , mVicenteYriarte , mAgua);
+anEdge = g.newEdge(gustaType , mLuisPerez , mCerveza);
+anEdge = g.newEdge(gustaType , mLuisPerez , mRefresco);
+anEdge = g.newEdge(gustaType , mLuisPerez , mToddy);
+anEdge = g.newEdge(gustaType , mLuisPerez , mJugoNaranja);
 
 //Añadir aristas para Frecuenta
 anEdge = g.newEdge(frecuentaType , mSergio , mAcuario);
@@ -230,6 +235,10 @@ anEdge = g.newEdge(frecuentaType , mCarolinaChang , mCasaProf);
 anEdge = g.newEdge(frecuentaType , mEnriquePlanchart , mLaMontana);
 anEdge = g.newEdge(frecuentaType , mVicenteYriarte , mGuardabosques);
 anEdge = g.newEdge(frecuentaType , mLuisPerez , mMYS);
+anEdge = g.newEdge(frecuentaType , mLuisPerez , mEstudiantes);
+anEdge = g.newEdge(frecuentaType , mLuisPerez , mAcuario);
+anEdge = g.newEdge(frecuentaType , mLuisPerez , mAmper);
+anEdge = g.newEdge(frecuentaType , mRicardoMonascal , mAcuario);
 
 //Añadir aristas para Vende
 anEdge = g.newEdge(vendeType , mAmper , mRefresco);
@@ -310,46 +319,19 @@ anEdge = g.newEdge(vendeType , mGuardabosques , mCafe);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(8));
 
 
-//QUERIES POR HACER
+/*****************************CONSULTAS DE LA PARTE 1******************************/
 
-//Bebidas que le gustan a Marlene
-Objects gustanMarlene = g.neighbors(mMarlene, gustaType, EdgesDirection.Outgoing);
 
-/* los bebedores que frecuentan sitios que vendan todas las bebidas que les gusten*/
-//todos los bebedores
+/**************CONSULTA #13***************/
+/* Personas que van a lugares en los que */ 
+/*    solo sirven lo que les gusta       */
+/*****************************************/
+
+System.out.println("Personas que solo van a lugares donde solo sirven lo que les gusta");
+
+//Todos los bebedores
 Objects bebedores = g.select(bebedorType);
-/*//todos los sitios
-Objects todossitios = g.select(fuenteSodaType);
-//todas las bebidas
-Objects todasbebidas = g.select(bebidaType);
-ObjectsIterator it1 = bebedores.iterator();
-//for each bebedor
-while(it1.hasNext()){
-    long bebActual1 = it1.next();
-    boolean gustasitios = true;
-    //todos los sitios que bebActual1 frecuenta
-    Objects visitaBebActual = g.neighbors(bebActual1, frecuentaType, EdgesDirection.Outgoing);
-    ObjectsIterator it2 = visitaBebActual.iterator();
-//  for each sitio que frecuenta
-    while(it2.hasNext()){
-       long sitioActual1 = it2.next();
-//     ver que a bebedor le gustan todas las bebidas que vende sitio
-       Objects vendeSitioActual = g.neighbors(sitioActual1, vendeType, EdgesDirection.Outgoing);
-       boolean gusta = true
-       ObjectsIterator it3 = vendeSitioActual.iterator();
-       while(it3.hasNext()){
-//     for each bebida que venden en el sitio actual 
-//         if bebedor no gusta bebida then
-//            gusta = false
-//         } 
-       }
-//     if gusta==false then gustasitios = false
-     }
-//   if gustasitios==true then respuesta.add(bebedor)
-}*/
 
-//Personas que van a lugares en los que solo sirven lo que les gusta
-//Objects bebedores = g.select(bebedorType);
 ObjectsIterator it = bebedores.iterator();
 Objects respuesta = sess.newObjects();
 while(it.hasNext())
@@ -392,10 +374,72 @@ while(it.hasNext())
 long aahia = respuesta.count();
 System.out.format("La query devuelve una lista con %d objetos\n", aahia);
 
+System.out.println("\n");
 
 respuesta.close();
 it.close();
+
+
+/**************CONSULTA #16***************/
+/*    Bebedores que frecuentan sitios    */ 
+/*   que vendan todas las bebidas que    */
+/*               les gusten              */  
+/*****************************************/
+
+Objects respuesta2 = sess.newObjects();
+//for each bebedor
+ObjectsIterator it1 = bebedores.iterator();
+while(it1.hasNext()){
+    long bebActual1 = it1.next();
+    //todas las bebibas que le gustan al bebActual1
+    Objects bebsGustanaActual1 = g.neighbors(bebActual1, gustaType, EdgesDirection.Outgoing);
+    boolean gustasitios = true;
+    //todos los sitios que bebActual1 frecuenta
+    Objects visitaBebActual = g.neighbors(bebActual1, frecuentaType, EdgesDirection.Outgoing);
+    ObjectsIterator it2 = visitaBebActual.iterator();
+//  for each sitio que frecuenta
+    while(it2.hasNext()){
+        long sitioActual1 = it2.next();
+//      Todas las bebidas que vende sitioActual
+        Objects vendeSitioActual = g.neighbors(sitioActual1, vendeType, EdgesDirection.Outgoing);
+//      ver que la interseccion de vendeSitioActual y bebsGustanaActual es igual a bebsGustanaActual
+        Objects intersec = Objects. combineIntersection (vendeSitioActual , bebsGustanaActual1);
+        if(!intersec.equals(bebsGustanaActual1)){
+            gustasitios = false;
+        }
+        vendeSitioActual.close();
+        intersec.close();
+    }
+    if (gustasitios==true){
+        respuesta2.add(bebActual1);
+    }
+    visitaBebActual.close();
+    bebsGustanaActual1.close();
+    it2.close();
+}
+
+ObjectsIterator it3 = respuesta2.iterator();
+System.out.println("Bebedores que frecuentan sitios que vendan todas las bebidas que les gusten:");
+while (it3.hasNext())
+{
+    long bebid = it3.next();
+    g.getAttribute(bebid , nombreType , value);
+    System.out.println(value.getString());
+}
+System.out.println("\n");
+// The ObjectsIterator must be closed
+it3.close();
+it1.close();
+respuesta2.close();
 bebedores.close();
+
+/**************CONSULTA #25***************/
+/*  las bebidas que se venden en alguna  */ 
+/*   fuente de sodas pero que a nadie    */
+/*                les gusta              */  
+/*****************************************/
+
+System.out.println("Bebidas que se venden en alguna fuente de soda pero que no le gustan a nadie");
 
 //Bebidas que se venden en alguna fuente pero no le gustan a nadie
 //bebidas que no le gustan a nadie
@@ -425,42 +469,67 @@ while (it.hasNext())
     g.getAttribute(bebidaid , nombreBebType , value);
     System.out.println("No gustan y se vende: " + value.getString());
 }
+
+System.out.println("\n");
+
 respuesta.close();
 
+/**************CONSULTA #30***************/
+/*  Bebidas mas servidas en los lugares  */ 
+/*      frecuentados por Luis Perez      */ 
+/*****************************************/
 
-/*
-// Get the movies directed by Woody Allen
-Objects directedByWoody = g.neighbors(pWoody, directsType , EdgesDirection.Outgoing
-);
-// Get the cast of the movies directed by Woody Allen
-Objects castDirectedByWoody = g.neighbors(directedByWoody , castType , EdgesDirection.Any);
-// We don't need the directedByWoody collection anymore , so we should close it
-directedByWoody.close();
-// Get the movies directed by Sofia Coppola
-Objects directedBySofia = g.neighbors(pSofia, directsType , EdgesDirection.Outgoing);
-// Get the cast of the movies directed by Sofia Coppola
-Objects castDirectedBySofia = g.neighbors(directedBySofia , castType , EdgesDirection.Any);
-// We don't need the directedBySofia collection anymore , so we should close it
-directedBySofia.close();
-// We want to know the people that acted in movies directed by Woody AND in movies
-//directed by Sofia.
-Objects castFromBoth = Objects.combineIntersection(castDirectedByWoody , castDirectedBySofia);
-// We don't need the other collections anymore
-castDirectedByWoody.close();
-castDirectedBySofia.close();
-*/
-// Say hello to the people found
-it = gustanMarlene.iterator();
-while (it.hasNext())
+
+
+
+/**************CONSULTA #40***************/
+/*   Promedio de las bebidas que no le   */ 
+/*         gustan a Luis Perez           */
+/*****************************************/
+
+System.out.println("Promedio de bebidas que no le gustan a Luis Perez");
+
+//Todas las bebidas
+Objects bebidas5 = g.select(bebidaType);
+
+//Bebidas que le gustan a Luis Perez
+Objects bebLuisP = g.neighbors(mLuisPerez, gustaType, EdgesDirection.Outgoing);
+
+//Bebidas que no le gustan a Luis Perez
+Objects intersec = Objects. combineIntersection (bebidas5 , bebLuisP);
+long numbebs = intersec.count();
+//Para cada bebida tengo que encontrar todos los edges de ventas que lo vendan
+//Y luego tomar el atributo precio de esas ventas
+ObjectsIterator it5 = intersec.iterator();
+long sumatotal = 0;
+while(it5.hasNext())
 {
-    long bebidaid = it.next();
-    g.getAttribute(bebidaid , nombreBebType , value);
-    System.out.println("Encontre " + value.getString());
+    long bebidaActual = it5.next();
+    g.getAttribute(bebidaActual , nombreBebType , value);
+    System.out.print(value+": ");
+    long suma = 0;
+    Objects edges = g.explode(bebidaActual , vendeType , EdgesDirection.Ingoing);
+    long numedges = edges.count();
+    ObjectsIterator it6 = edges.iterator();
+    while(it6.hasNext()){
+        long edgeActual = it6.next();
+        g.getAttribute(edgeActual , precioVentaType , value);
+        int num = value.getInteger();
+        suma = suma + num;
+    }
+    suma = suma / numedges;
+    System.out.print(suma+"\n");
+    sumatotal = sumatotal + suma;
+    edges.close();
+    it6.close();
 }
-// The ObjectsIterator must be closed
-it.close();
-// The Objects must be closed
-gustanMarlene.close();
+sumatotal = sumatotal / numbebs;
+System.out.println("Promedio total: "+sumatotal+"\n");
+
+bebidas5.close();
+bebLuisP.close();
+intersec.close();
+it5.close();
 
 
 sess.close();

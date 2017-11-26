@@ -12,3 +12,74 @@
 2017-11-25 16:17:21.097|GraphPool[INFO] Closed BebedoresYBebidas.gdb
 2017-11-25 16:17:21.098|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
 2017-11-25 16:17:21.098|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-25 16:17:21.098
+2017-11-25 23:06:29.970|SPARKSEE[INFO] ** START ** 2017-11-25 23:06:29.956 Software version: 5.2.3
+2017-11-25 23:06:30.022|SPARKSEE[INFO] No license code
+2017-11-25 23:06:30.080|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-25 23:06:30.347|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-25 23:06:30.347|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-25 23:06:30.347|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-25 23:06:30.347
+2017-11-25 23:34:04.559|SPARKSEE[INFO] ** START ** 2017-11-25 23:34:04.559 Software version: 5.2.3
+2017-11-25 23:34:04.614|SPARKSEE[INFO] No license code
+2017-11-25 23:34:04.751|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-25 23:34:05.274|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-25 23:34:05.274|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-25 23:34:05.274|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-25 23:34:05.274
+2017-11-25 23:37:48.621|SPARKSEE[INFO] ** START ** 2017-11-25 23:37:48.621 Software version: 5.2.3
+2017-11-25 23:37:48.639|SPARKSEE[INFO] No license code
+2017-11-25 23:37:48.703|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 00:01:11.108|SPARKSEE[INFO] ** START ** 2017-11-26 00:01:11.108 Software version: 5.2.3
+2017-11-26 00:01:11.148|SPARKSEE[INFO] No license code
+2017-11-26 00:01:11.217|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 00:01:11.246|Tx[SEVERE] Objects references still active when closing.
+2017-11-26 00:07:57.707|SPARKSEE[INFO] ** START ** 2017-11-26 00:07:57.707 Software version: 5.2.3
+2017-11-26 00:07:57.718|SPARKSEE[INFO] No license code
+2017-11-26 00:07:57.755|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 00:07:57.898|Tx[SEVERE] Objects references still active when closing.
+2017-11-26 00:11:24.253|SPARKSEE[INFO] ** START ** 2017-11-26 00:11:24.253 Software version: 5.2.3
+2017-11-26 00:11:24.264|SPARKSEE[INFO] No license code
+2017-11-26 00:11:24.416|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 00:11:24.584|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 00:11:24.586|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 00:11:24.586|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 00:11:24.586
+2017-11-26 01:28:13.465|SPARKSEE[INFO] ** START ** 2017-11-26 01:28:13.465 Software version: 5.2.3
+2017-11-26 01:28:13.561|SPARKSEE[INFO] No license code
+2017-11-26 01:28:13.649|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 01:28:13.872|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 01:28:13.872|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 01:28:13.872|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 01:28:13.872
+2017-11-26 01:37:16.195|SPARKSEE[INFO] ** START ** 2017-11-26 01:37:16.195 Software version: 5.2.3
+2017-11-26 01:37:16.229|SPARKSEE[INFO] No license code
+2017-11-26 01:37:16.294|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 01:37:16.663|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 01:37:16.663|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 01:37:16.664|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 01:37:16.664
+2017-11-26 01:37:22.645|SPARKSEE[INFO] ** START ** 2017-11-26 01:37:22.645 Software version: 5.2.3
+2017-11-26 01:37:22.645|SPARKSEE[INFO] No license code
+2017-11-26 01:37:22.833|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 01:37:23.189|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 01:37:23.190|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 01:37:23.190|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 01:37:23.190
+2017-11-26 01:40:21.410|SPARKSEE[INFO] ** START ** 2017-11-26 01:40:21.409 Software version: 5.2.3
+2017-11-26 01:40:21.507|SPARKSEE[INFO] No license code
+2017-11-26 01:40:21.673|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 01:40:21.948|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 01:40:21.948|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 01:40:21.949|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 01:40:21.948
+2017-11-26 01:41:48.250|SPARKSEE[INFO] ** START ** 2017-11-26 01:41:48.250 Software version: 5.2.3
+2017-11-26 01:41:48.335|SPARKSEE[INFO] No license code
+2017-11-26 01:41:48.427|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 01:41:48.572|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 01:41:48.572|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 01:41:48.572|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 01:41:48.572
+2017-11-26 02:50:12.146|SPARKSEE[INFO] ** START ** 2017-11-26 02:50:12.146 Software version: 5.2.3
+2017-11-26 02:50:12.280|SPARKSEE[INFO] No license code
+2017-11-26 02:50:12.372|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 02:50:12.728|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 02:50:12.728|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 02:50:12.728|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 02:50:12.728
+2017-11-26 02:58:02.295|SPARKSEE[INFO] ** START ** 2017-11-26 02:58:02.295 Software version: 5.2.3
+2017-11-26 02:58:02.394|SPARKSEE[INFO] No license code
+2017-11-26 02:58:02.471|SPARKSEE[INFO] GraphPool 'BebedoresYBebidas' has been created at BebedoresYBebidas.gdb
+2017-11-26 02:58:02.627|GraphPool[INFO] Closed BebedoresYBebidas.gdb
+2017-11-26 02:58:02.627|GraphPool[WARNING] Removed BebedoresYBebidas.gdb.tmp
+2017-11-26 02:58:02.627|SPARKSEE[INFO] ** SHUTDOWN ** 2017-11-26 02:58:02.627
