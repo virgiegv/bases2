@@ -315,33 +315,41 @@ g.setAttribute(anEdge, precioVentaType , value.setInteger(8));
 //Bebidas que le gustan a Marlene
 Objects gustanMarlene = g.neighbors(mMarlene, gustaType, EdgesDirection.Outgoing);
 
-//Bebedores que frecuentan fuentes de soda que venden bebidas que le gustan 
-
-
 /* los bebedores que frecuentan sitios que vendan todas las bebidas que les gusten*/
 //todos los bebedores
-//Objects bebedores = g.select(bebedorType);
-//todos los sitios
-//Objects sitios = g.select(fuenteSodaType);
+Objects bebedores = g.select(bebedorType);
+/*//todos los sitios
+Objects todossitios = g.select(fuenteSodaType);
 //todas las bebidas
-//Objects bebidas = g.select(bebidaType);
+Objects todasbebidas = g.select(bebidaType);
+ObjectsIterator it1 = bebedores.iterator();
 //for each bebedor
-//  gustasitios = true
+while(it1.hasNext()){
+    long bebActual1 = it1.next();
+    boolean gustasitios = true;
+    //todos los sitios que bebActual1 frecuenta
+    Objects visitaBebActual = g.neighbors(bebActual1, frecuentaType, EdgesDirection.Outgoing);
+    ObjectsIterator it2 = visitaBebActual.iterator();
 //  for each sitio que frecuenta
+    while(it2.hasNext()){
+       long sitioActual1 = it2.next();
 //     ver que a bebedor le gustan todas las bebidas que vende sitio
-//     gusta = true
-//     for each bebida 
+       Objects vendeSitioActual = g.neighbors(sitioActual1, vendeType, EdgesDirection.Outgoing);
+       boolean gusta = true
+       ObjectsIterator it3 = vendeSitioActual.iterator();
+       while(it3.hasNext()){
+//     for each bebida que venden en el sitio actual 
 //         if bebedor no gusta bebida then
 //            gusta = false
 //         } 
-//     }
+       }
 //     if gusta==false then gustasitios = false
-//   }
+     }
 //   if gustasitios==true then respuesta.add(bebedor)
-
+}*/
 
 //Personas que van a lugares en los que solo sirven lo que les gusta
-Objects bebedores = g.select(bebedorType);
+//Objects bebedores = g.select(bebedorType);
 ObjectsIterator it = bebedores.iterator();
 Objects respuesta = sess.newObjects();
 while(it.hasNext())
