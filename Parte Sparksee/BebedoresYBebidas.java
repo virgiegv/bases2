@@ -1,4 +1,7 @@
 import com.sparsity.sparksee.gdb.*;
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 public class BebedoresYBebidas
 {
 public static void main(String argv[])
@@ -489,6 +492,64 @@ respuesta.close();
 /*      frecuentados por Luis Perez      */ 
 /*****************************************/
 
+Dictionary<Long, Integer> BebidasVendidas = new Hashtable<Long, Integer>(); 
+
+Objects fuentesVisitadas = g.neighbors(mLuisPerez, frecuentaType, EdgesDirection.Outgoing);
+it = fuentesVisitadas.iterator();
+
+while (it.hasNext())
+{
+    long fuenteID = it.next();
+    Objects ventas = g.neighbors(fuenteID, vendeType, EdgesDirection.Outgoing);
+    ObjectsIterator it2 = ventas.iterator();
+    while (it2.hasNext())
+    {
+        long BebidaID = it2.next();
+        if (BebidasVendidas.get(BebidaID) == null){
+            BebidasVendidas.put(BebidaID,1);
+        }
+        else{
+            int numAnterior = BebidasVendidas.get(BebidaID);
+            BebidasVendidas.put(BebidaID, numAnterior + 1);    
+        }
+    }
+    it2.close();
+    ventas.close();
+}
+fuentesVisitadas.close();
+it.close();
+bebidas = g.select(bebidaType);
+it = bebidas.iterator();
+Objects bebidaMasVendida = sess.newObjects();
+int numAnterior = 0;
+while (it.hasNext())
+{
+    long bebida = it.next();
+    if (BebidasVendidas.get(bebida) != null)
+    {
+        if (BebidasVendidas.get(bebida) > numAnterior){
+            numAnterior = BebidasVendidas.get(bebida);
+            bebidaMasVendida.clear();
+            bebidaMasVendida.add(bebida);
+        }         
+        else if(BebidasVendidas.get(bebida) == numAnterior){
+            bebidaMasVendida.add(bebida);
+        }
+    }
+}
+bebidas.close();
+it.close();
+it = bebidaMasVendida.iterator();
+System.out.format("las bebidas mas vendidas en los lugares que frecuenta Luis Perez son:\n");
+while (it.hasNext())
+{
+    long bebida = it.next();
+    g.getAttribute(bebida , nombreBebType , value);
+    System.out.format("%s \n", value);
+}
+System.out.println("\n");
+bebidaMasVendida.close();
+it.close();
 
 
 
