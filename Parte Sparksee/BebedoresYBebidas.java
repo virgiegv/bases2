@@ -270,15 +270,15 @@ anEdge = g.newEdge(vendeType , mEstudiantes , mJugoGuayaba);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(3));
 anEdge = g.newEdge(vendeType , mEstudiantes , mJugoManzana);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(7));
-anEdge = g.newEdge(vendeType , mMys , mJugoNaranja);
+anEdge = g.newEdge(vendeType , mMYS , mJugoNaranja);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(3));
-anEdge = g.newEdge(vendeType , mMys , mJugoFresa);
+anEdge = g.newEdge(vendeType , mMYS , mJugoFresa);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(1));
-anEdge = g.newEdge(vendeType , mMys , mJugoGuayaba);
+anEdge = g.newEdge(vendeType , mMYS , mJugoGuayaba);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(1));
-anEdge = g.newEdge(vendeType , mMys , mJugoLechoza);
+anEdge = g.newEdge(vendeType , mMYS , mJugoLechoza);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(1));
-anEdge = g.newEdge(vendeType , mMys , mJugoFresa);
+anEdge = g.newEdge(vendeType , mMYS , mJugoFresa);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(3));
 anEdge = g.newEdge(vendeType , mElPunto , mCerveza);
 g.setAttribute(anEdge, precioVentaType , value.setInteger(2));
@@ -375,7 +375,8 @@ while(it.hasNext())
     bebidas.close();
     g.getAttribute(bebActual , nombreType , value);
     if (BebFuentesVisitadas.count() > 0){
-        System.out.print(value.getString()+" visita a fuentes que sirven bebidas que no gustan\n");
+        System.out.print("");
+        //value.getString()+" visita a fuentes que sirven bebidas que no gustan\n");
     }
     else{
         respuesta.add(bebActual);
@@ -385,7 +386,7 @@ while(it.hasNext())
 }
 
 long aahia = respuesta.count();
-System.out.format("La query devuelve una lista con %d objetos\n", aahia);
+//System.out.format("La query devuelve una lista con %d objetos\n", aahia);
 
 System.out.println("\n");
 
