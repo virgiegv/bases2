@@ -664,6 +664,57 @@ it7.close();
 //Por cada bebida: 
     //Calcular cuantos nodos de "Gustar" entran a la bebida
     
+/**************CONSULTA #2****************/
+/*   Listar las personas que gustan de   */
+/* mas bebidas a menos bebidas           */
+/*****************************************/
+
+System.out.println("Personas a las que le gustan mas bebidas en orden");
+
+//Todas las bebidas
+Objects personas = g.select(bebedorType);
+Integer len2 = (int) (long) personas.count();
+ObjectsIterator it8 = personas.iterator();
+long[] arrayPers;
+arrayPers = new long[len2];
+int[] arrayValores2 = new int[len2];
+int iterador2 = 0;
+while(it8.hasNext())
+{
+    long bebedorActual = it8.next();
+    Objects gusta = g.neighbors(bebedorActual, gustaType, EdgesDirection.Outgoing);
+    Integer num_gusta = (int) (long) gusta.count();
+    arrayPers[iterador2] = bebedorActual;
+    arrayValores2[iterador2] = num_gusta;
+    iterador2 = iterador2 + 1;
+    gusta.close();
+}
+
+int temp3;
+long temp4;
+for (int i = 1; i < arrayValores2.length; i++) {
+    for(int j = i ; j > 0 ; j--){
+        if(arrayValores2[j] > arrayValores2[j-1]){
+            temp3 = arrayValores2[j];
+            temp4 = arrayPers[j];
+            arrayValores2[j] = arrayValores2[j-1];
+            arrayPers[j] = arrayPers[j-1];
+            arrayValores2[j-1] = temp3;
+            arrayPers[j-1] = temp4;
+        }
+    }
+}
+ 
+
+for (int i = 0; i < arrayValores2.length; i++) {
+    long coso = arrayPers[i];
+    g.getAttribute(coso,nombreType,value);
+    System.out.println("a "+value+" le gustan "+arrayValores2[i]+" bebidas.");
+}
+
+System.out.println("");
+personas.close();
+it8.close();
 
 /**************************CERRANDO LA BASE DE DATOS**************************/
 
