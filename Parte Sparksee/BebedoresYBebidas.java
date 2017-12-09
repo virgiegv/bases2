@@ -603,6 +603,69 @@ bebLuisP.close();
 intersec.close();
 it5.close();
 
+/***************************CONSULTAS DE LA PARTE 2***************************/
+
+System.out.println("Parte 2: Consultas extra");
+
+/**************CONSULTA #1****************/
+/*   Listar las bebidas en orden de más  */ 
+/*          a menos "gustadas"           */
+/*****************************************/
+
+System.out.println("Lista de bebidas en orden ascendente de popularidad (gustar)");
+
+//Todas las bebidas
+Objects bebidas6 = g.select(bebidaType);
+//int len = bebidas6.count().getInteger;
+Integer len = (int) (long) bebidas6.count();
+ObjectsIterator it7 = bebidas6.iterator();
+long[] arrayBebs;
+arrayBebs = new long[len];
+int[] arrayValores = new int[len];
+int iterador = 0;
+while(it7.hasNext())
+{
+    long bebActual = it7.next();
+    //Obtener todas las aristas de "gustar" que entran a la bebida
+    Objects es_gustada = g.neighbors(bebActual, gustaType, EdgesDirection.Ingoing);
+    //int num_gusta = es_gustada.count();
+    Integer num_gusta = (int) (long) es_gustada.count();
+    arrayBebs[iterador] = bebActual;
+    arrayValores[iterador] = num_gusta;
+    iterador = iterador + 1;
+    es_gustada.close();
+}
+
+int temp;
+long temp2;
+for (int i = 1; i < arrayValores.length; i++) {
+    for(int j = i ; j > 0 ; j--){
+        if(arrayValores[j] > arrayValores[j-1]){
+            temp = arrayValores[j];
+            temp2 = arrayBebs[j];
+            arrayValores[j] = arrayValores[j-1];
+            arrayBebs[j] = arrayBebs[j-1];
+            arrayValores[j-1] = temp;
+            arrayBebs[j-1] = temp2;
+        }
+    }
+}
+ 
+
+for (int i = 0; i < arrayValores.length; i++) {
+    long coso = arrayBebs[i];
+    g.getAttribute(coso,nombreBebType,value);
+    System.out.println(value+" le gusta a "+arrayValores[i]+" personas.");
+}
+
+System.out.println("");
+bebidas6.close();
+it7.close();
+//Por cada bebida: 
+    //Calcular cuantos nodos de "Gustar" entran a la bebida
+    
+
+/**************************CERRANDO LA BASE DE DATOS**************************/
 
 sess.close();
 db.close();
