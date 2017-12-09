@@ -143,6 +143,9 @@ g.setAttribute(mCafe , nombreBebType , value.setString("Cafe"));
 long mAgua = g.newNode(bebidaType);
 g.setAttribute(mAgua , codBebType , value.setLong(15));
 g.setAttribute(mAgua , nombreBebType , value.setString("Agua"));
+long mMalta = g.newNode(bebidaType);
+g.setAttribute(mMalta , codBebType , value.setLong(16));
+g.setAttribute(mMalta , nombreBebType , value.setString("Malta"));
 
 //Añadir nodos para Bebedores
 
@@ -715,6 +718,37 @@ for (int i = 0; i < arrayValores2.length; i++) {
 System.out.println("");
 personas.close();
 it8.close();
+
+
+/**************CONSULTA #3*****************/
+/*   Bebedores que no les gusta la malta  */ 
+/******************************************/
+
+
+//Todos los bebedores
+Objects bebedor1 = g.select(bebedorType);
+ObjectsIterator it9 = bebedor1.iterator();
+
+//Bebedores que les gusta la malta
+Objects bebeMalta = g.neighbors(mMalta, gustaType, EdgesDirection.Ingoing);
+
+//Bebedores que no les gusta la malta
+Objects respuestaMalta = Objects. combineDifference (bebedor1,bebeMalta );
+
+System.out.println("Bebedores que no les gusta la malta: \n");
+it8 = respuestaMalta.iterator();
+while (it9.hasNext())
+{
+    long bebedorid = it9.next();
+    g.getAttribute(bebedorid , nombreType , value);
+    System.out.println("A bebedor :" + value.getString());
+}
+System.out.println("");
+bebedor1.close();
+bebeMalta.close();
+respuestaMalta.close();
+it9.close();
+
 
 /**************************CERRANDO LA BASE DE DATOS**************************/
 
